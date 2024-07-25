@@ -10,7 +10,7 @@ External functions are only accessible externally by other contracts and are not
 Public functions are accessible to the contract that defines it and to any external contract or third party that calls it. The public is the default visibility.</summary></details>
 
 #### Approximately, how large can a smart contract be?
-EIP-170 set the contract code size limit to 0x6000 bytes (i.e 24,576 bytes) which results in a contract creation failure with an out-of-gas error. It was introduced to address the slight quadratic vulnerability in Ethereum and prevent DOS denial of service attacks.
+EIP-170 set the contract code size limit to 0x6000 bytes (i.e 24,576 bytes or approx 24kb) which results in a contract creation failure with an out-of-gas error. It was introduced to address the slight quadratic vulnerability in Ethereum and prevent DOS denial of service attacks.
 
 Although the nodes are compensated with gas fees for the computational work that they perform when executing a transaction, there are additional costs associated with maintaining and interacting with the smart contract that are not directly covered by the gas fees.
 
@@ -43,7 +43,7 @@ Arithemetic operations revert on underflow and overflow . They are checked by de
 #### What special CALL is required for proxies to work?
 Delegate call is required for proxy to work. delecate call executes code in another contract in the context of the contract that calls it.For this to work, the storage layout must be preserved. When A executes delegatecall to B, B’s code is executed with the context of A’s storage, A’s msg.sender and A’s msg.value. The implementation contract can be upgraded without the smart contract having to change the address of the proxy.
 
-Prior to EIP-1559, how do you calculate the dollar cost of an Ethereum transaction?
+#### Prior to EIP-1559, how do you calculate the dollar cost of an Ethereum transaction?
 Prior to EIP-1559,The miner received 100% of the gas cost.
 
 Dollar Cost = (Gas Price * Gas Used / 1e9) * Ether Exchange Rate
@@ -56,7 +56,7 @@ Gas price: The price per unit of gas specified by the sender in Gwei (1 Gwei = 0
 
 Ether Exchange Rate: The current exchange rate of Ether to US dollars.
 
-After EIP-1559, how do you calculate the dollar cost of an Ethereum transaction?
+#### After EIP-1559, how do you calculate the dollar cost of an Ethereum transaction?
 Dollar Cost = (Base Fee + Priority Fee) * Gas Used / 1e9 * Ether Exchange Rate
 
 Base Fee(Gwei): The minimum fee required to include a transaction in a block.Its dynamically adjusted based on network congestion.The fee is then burned.
@@ -67,5 +67,25 @@ Gas Used(units): The amount of gas that can be used for the transaction.
 
 Ether Exchange Rate: The current exchange rate of Ether to US dollars.
 
-What are the challenges of creating a random number on the blockchain?
+#### What are the challenges of creating a random number on the blockchain?
 Blockchain is deterministic. They must arrive at the same state after processing same set of transactions and all of this data is public. So, arriving at random number is challenging. althought attempts to generate random numbers from blocknumber and block timestamp can be used for limited randomness, they also pose the risk of miners poentially manipulating the process if they have significant hashing power.
+
+#### What is the difference between a Dutch Auction and an English Auction?
+A Dutch auction starts with a high price that gradually decreases until a buyer accepts the price. An English auction starts with a low price that increases as bidders competitively bid higher amounts until no higher bids are made.
+
+#### What is the difference between transfer and transferFrom in ERC20?
+A transfer function allows the sender to transfer tokens directly to another address. The sender's account must have enough balance to cover the transfer amount.
+A transferFrom function allows an approved third party to transfer tokens from one address to another. It is used in conjunction with the approve function, where the token owner allows a spender to withdraw multiple times up to a certain amount.
+
+#### Which is better to use for an address allowlist: a mapping or an array? Why?
+Mapping is better because it is gas & time efficient and scaleable. Mappings provide O(1) time complexity for lookups, additions, and deletions.With mapping, we can directly check if a value is in allowlist or not. But to check it on an array, we will have to loop through it completely.
+
+
+
+
+
+
+
+
+
+
