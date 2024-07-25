@@ -1,6 +1,5 @@
-# Solidity-Interview-Questions
-Solidity Developer Interview Questions and Answers
-
+# Solidity-Interview-Questions-And-Answers
+You might as well Hire me, since I've already answered these :) 
 #### What is the difference between private, internal, public, and external functions?
 Private functions are only accessible to the contract that defines it.
 
