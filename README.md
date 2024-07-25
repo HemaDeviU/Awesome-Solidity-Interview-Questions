@@ -80,6 +80,67 @@ A transferFrom function allows an approved third party to transfer tokens from o
 #### Which is better to use for an address allowlist: a mapping or an array? Why?
 Mapping is better because it is gas & time efficient and scaleable. Mappings provide O(1) time complexity for lookups, additions, and deletions.With mapping, we can directly check if a value is in allowlist or not. But to check it on an array, we will have to loop through it completely.
 
+#### Why shouldn’t tx.origin be used for authentication?
+tx.origin refers to the original sender of a transaction, while msg.sender refers to the immediate sender of a message within a contract. so, an attacker could phish a user to authnticate as tx.origin in a target contract.
+
+#### What hash function does Ethereum primarily use?
+It uses Keccak-256 hash function primariyl for core functions like generating addresses, creating cryptographic proofs, and ensuring the integrity of data. Note that it also uses other hash functions like RIPEMD-160,SHA-256,Blake2b for limited purposes.
+
+#### How much is 1 gwei of Ether?
+One gwei is equal to 0.000000001 ($1\times10^{-9}$) Ether.
+
+#### How much is 1 wei of Ether?
+One wei is equal to 0.000000000000000001 Ether ($1\times10^{-18}$) Ether. Wei is the smallest unit of Ether.
+
+#### What is the difference between assert and require?
+Assert is used for input validation, to 'check' the state before execution of a statement. Assert is used in testing to check for invariants and prevent conditions that should never be possible.
+
+#### What is a flash loan?
+Flash loan is a loan faciliated with a smart contract to be repaid within the same transaction.
+
+#### What is the check-effects pattern?
+It's a security pattern that protects control flow against reentrancy. Check-check the state of the contract,caller Effects-update the global state  Interactions-if the checks pass, perform external call.
+
+#### What is the minimum amount of Ether required to run a solo staking node?
+It's 32 ETH.
+
+#### What is the difference between fallback and receive?
+Receive is a special function executed when ether is sent to a contract and the msg.data is empty.
+Fallback is a special function executed when a function that does not exist is called or if ether is sent to the contract where receive function doesn't exist or the msg.data is empty.
+
+#### How do you send Ether to a contract that does not have payable functions, or a receive or fallback?
+By providing target address as parameter to a selfdestruct call from another contract.The selfdestruct forces the target contract to receive ether. Although the opcode is depreciated, the attack is still possible using previous versions.
+
+#### what is the gas limit per block?
+30M gas
+
+####  What is reentrancy?
+An attack vector where the execution flow is transferred to an external contract allowing a function to be called recursively.
+
+#### What prevents infinite loops from running forever?
+gas,when gas limit is exceeded, the execution stops.
+
+#### What is the difference between view and pure?
+View - functions that can read from blockchain,but can't modify the state
+Pure- functions that cannot read from blockchain and can't modify the state
+
+#### What is the difference between transferFrom and safeTransferFrom in ERC721?
+#### How can an ERC1155 token be made into a non-fungible token?
+#### What is access control and why is it important?
+#### What does a modifier do?
+#### What is the largest value a uint256 can store?
+
+
+
+
+
+
+
+
+  
+
+
+
 
 
 
