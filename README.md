@@ -125,8 +125,12 @@ View - functions that can read from blockchain,but can't modify the state
 Pure- functions that cannot read from blockchain and can't modify the state
 
 #### What is the difference between transferFrom and safeTransferFrom in ERC721?
+Both transferFrom and safeTransferFrom are used to transfer a token from one account to another. The difference is that safeTrasnferFrom(ERC721) performs an additional check of if the recipient is a contract, and if yes, it calls the callback function in the recipient (onERC721Received) and reverts if the recipient doesn't return the magic value.
+bytes4(keccak256("onERC721Received(address,address,uint256,bytes))
 #### How can an ERC1155 token be made into a non-fungible token?
+ERC1155 is a multi token standard that can represent both fungible and non-fingible tokens within a single contracct. It cna be done by restricting the tokenid to a maxsupply of 1 and input the metadata in the uri.
 #### What is access control and why is it important?
+
 #### What does a modifier do?
 #### What is the largest value a uint256 can store?
 
